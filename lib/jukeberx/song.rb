@@ -14,7 +14,7 @@ module Jukeberx
       spawn("afplay \"#{@filename}\"")
     end
 
-    def to_json
+    def to_json(options=nil)
       {
         id:      self.id,
         artist:  self.artist,
