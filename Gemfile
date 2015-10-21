@@ -5,6 +5,7 @@ gemspec
 
 gem "sinatra"
 gem "mp3info"
+gem "httparty"
 
 group :development do
   gem "pry"
