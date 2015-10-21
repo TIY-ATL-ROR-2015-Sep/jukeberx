@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brit's Badass Website</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+      <h1>THE LIBRARY</h1>
+
+      <p>You're probably here to listen to some music, right?</p>
+      <ul class="song-list">
+          <% songs.each do |song| %>
+              <li>
+                  <%= song.artist %> - <%= song.title %>
+                  <form action="/api/play/<%= song.id %>" method="post">
+                      <input type="submit" value="Play!">
+                  </form>
+              </li>
+          <% end %>
+      </ul>
+  </body>
+</html>

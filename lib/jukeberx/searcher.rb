@@ -8,6 +8,7 @@ end
 
 module Jukeberx
   class Searcher
+    attr_reader :songs
     # include Enumerable
     include SillyExample
 

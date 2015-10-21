@@ -51,6 +51,10 @@ module Jukeberx
       status 204
     end
 
+    get "/" do
+      erb :index, locals: { songs: settings.library.songs }
+    end
+
     run! if app_file == $0
   end
 end
