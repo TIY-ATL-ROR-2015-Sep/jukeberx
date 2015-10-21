@@ -1,16 +1,27 @@
 require "mp3info"
 
+module SillyExample
+  def cookies
+    puts "NOM NOM NOM NOM NOM!"
+  end
+end
+
 module Jukeberx
   class Searcher
-    include Enumerable
+    # include Enumerable
+    include SillyExample
 
     def initialize(dir)
       @songs = []
       self.get_mp3s(dir)
     end
 
-    def each
-      @songs.each { |x| yield(x) }
+    # def each
+    #   @songs.each { |x| yield(x) }
+    # end
+
+    def get_song(id)
+      @songs.find { |song| song.id == id }
     end
 
     def match_artists(name)
