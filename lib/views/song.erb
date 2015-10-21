@@ -1,0 +1,6 @@
+<li>
+    <%= song.artist %> - <%= song.title %>
+    <form action="/api/play/<%= song.id %>" method="post">
+        <input type="submit" value="Play!">
+    </form>
+</li>
