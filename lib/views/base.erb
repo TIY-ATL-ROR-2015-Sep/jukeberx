@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Brit's Badass Website</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="/"><h1>Jukeberx</h1></a>
+                <%= erb :search_form %>
+            </nav>
+            <%= yield %>
+        </div>
+    </body>
+</html>

@@ -56,7 +56,21 @@ module Jukeberx
     end
 
     get "/" do
-      erb :index, locals: { songs: settings.library.songs }
+      erb :index, layout: :base,
+        locals: { songs: settings.library.songs }
+    end
+
+    get "/search" do
+      case params["category"]
+      when "artist"
+        results = settings.library.match_artists(params["query"])
+      when "album"
+        results = settings.library.match_albums(params["query"])
+      when "title"
+        results = settings.library.match_titles(params["query"])
+      end
+      erb :search, layout: :base,
+        locals: { songs: results, query: params["query"] }
     end
 
     run! if app_file == $0

@@ -1,4 +1,9 @@
 <section>
+    <div class="results-caption">
+        <h3>Search results</h3>
+        <p><%= songs.length %> results for "<%= query %>".</p>
+    </div>
+
     <ul class="song-list">
         <% songs.each do |song| %>
             <%= erb :song, locals: { song: song } %>
