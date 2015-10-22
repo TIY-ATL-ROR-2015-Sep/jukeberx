@@ -13,6 +13,8 @@ module Jukeberx
   class App < Sinatra::Base
     set :logging, true
     set :library, Searcher.new(MUSIC_DIR)
+    set :song, nil
+    set :pid,  nil
 
     get "/api/search" do
       if params["artist"]
@@ -30,6 +32,7 @@ module Jukeberx
     end
 
     post "/api/play/:id" do
+      @pid = settings.pid
       if @pid
         Process.kill(:SIGINT, @pid) unless Process.waitpid(@pid, Process::WNOHANG)
       end
@@ -37,7 +40,8 @@ module Jukeberx
       content_type "application/json"
       @song = settings.library.get_song(params["id"].to_i)
       if @song
-        @pid  = @song.play
+        settings.song = @song
+        settings.pid  = @song.play
         status 201
         { message: "Now playing: #{@song.artist} - #{@song.title}" }.to_json
       else
